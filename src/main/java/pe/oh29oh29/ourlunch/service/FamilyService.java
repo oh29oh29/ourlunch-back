@@ -8,6 +8,6 @@ import pe.oh29oh29.ourlunch.repository.FamilyRepository;
 @RequiredArgsConstructor
 public class FamilyService {
 
-    private FamilyRepository familyRepository;
+    private final FamilyRepository familyRepository;
 
 }

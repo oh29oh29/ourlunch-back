@@ -8,6 +8,6 @@ import pe.oh29oh29.ourlunch.service.FamilyService;
 @RequiredArgsConstructor
 public class FamilyController {
 
-    private FamilyService familyService;
+    private final FamilyService familyService;
 
 }

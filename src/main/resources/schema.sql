@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS restaurants (
 
 CREATE TABLE IF NOT EXISTS members (
   id VARCHAR(45) NOT NULL,
-  password VARCHAR(45) NULL,
+  password VARCHAR(45) NOT NULL,
   sign_up_date VARCHAR(19) NOT NULL,
   PRIMARY KEY (id)
 );

@@ -27,7 +27,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'mysql:mysql-connector-java'
 //    compileOnly group: 'com.h2database', name: 'h2', version: '1.4.197'
-    runtimeOnly 'com.h2database:h2'
+    compileOnly 'com.h2database:h2'
     compileOnly 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

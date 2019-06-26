@@ -1,6 +1,7 @@
 package pe.oh29oh29.ourlunch.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 @Table(name = "families")
 @Data
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class Family implements Serializable {
 
     @Id
@@ -21,6 +23,7 @@ public class Family implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "companyId")
+    @NonNull
     private Company company;
 
     @Column

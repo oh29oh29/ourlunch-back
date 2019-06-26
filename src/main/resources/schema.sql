@@ -47,13 +47,14 @@ CREATE TABLE IF NOT EXISTS members (
 );
 
 CREATE TABLE IF NOT EXISTS family_members (
+  id VARCHAR(32) NOT NULL,
   family_id VARCHAR(32) NOT NULL,
   member_id VARCHAR(45) NOT NULL,
   name VARCHAR(45) NOT NULL,
   is_master INT NOT NULL DEFAULT 0,
   taste VARCHAR(45) NULL,
   join_date VARCHAR(19) NOT NULL,
-  PRIMARY KEY (family_id, member_id),
+  PRIMARY KEY (id, family_id, member_id),
   CONSTRAINT fk_family_member_members
     FOREIGN KEY (member_id)
     REFERENCES members (id)

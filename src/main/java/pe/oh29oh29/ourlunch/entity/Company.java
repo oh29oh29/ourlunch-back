@@ -11,6 +11,7 @@ import java.io.Serializable;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Company implements Serializable {
 
     @Id

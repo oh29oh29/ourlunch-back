@@ -1,8 +1,10 @@
 package pe.oh29oh29.ourlunch.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -10,16 +12,22 @@ import javax.persistence.*;
 @Table(name = "family_members")
 @Data
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class FamilyMembers {
 
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private String id;
+
     @ManyToOne
     @JoinColumn(name = "familyId")
+    @NonNull
     private Family family;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "memberId")
+    @NonNull
     private Member member;
 
     @Column

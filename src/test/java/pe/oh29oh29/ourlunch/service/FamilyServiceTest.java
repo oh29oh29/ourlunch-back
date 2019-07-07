@@ -8,6 +8,7 @@ import pe.oh29oh29.ourlunch.entity.Company;
 import pe.oh29oh29.ourlunch.entity.Family;
 import pe.oh29oh29.ourlunch.entity.FamilyMembers;
 import pe.oh29oh29.ourlunch.entity.Member;
+import pe.oh29oh29.ourlunch.model.RequestDTO;
 import pe.oh29oh29.ourlunch.repository.CompanyRepository;
 import pe.oh29oh29.ourlunch.repository.FamilyMemberRepository;
 import pe.oh29oh29.ourlunch.repository.FamilyRepository;
@@ -18,17 +19,21 @@ import static org.junit.Assert.*;
 
 public class FamilyServiceTest extends TestSupport {
 
-    @Autowired
-    FamilyRepository familyRepository;
 
     @Autowired
-    MemberRepository memberRepository;
+    private FamilyService familyService;
 
     @Autowired
-    CompanyRepository companyRepository;
+    private FamilyRepository familyRepository;
 
     @Autowired
-    FamilyMemberRepository familyMemberRepository;
+    private MemberRepository memberRepository;
+
+    @Autowired
+    private CompanyRepository companyRepository;
+
+    @Autowired
+    private FamilyMemberRepository familyMemberRepository;
 
     @Before
     public void setUp() {
@@ -63,5 +68,20 @@ public class FamilyServiceTest extends TestSupport {
         assertEquals(familyMembers.isMaster(), createdFamilyMembers.isMaster());
         assertEquals(familyMembers.getJoinDate(), createdFamilyMembers.getJoinDate());
 
+    }
+
+    @Test
+    public void FamilyService_점심팸_생성_테스트() {
+        RequestDTO.FamilyCreationRequest request = new RequestDTO.FamilyCreationRequest();
+
+        request.setCompanyName("회사명_02");
+        request.setFamilyName("점심팸이름_02");
+        request.setMemberId("id_02");
+        request.setMemberName("멤버이름_02");
+        request.setMemberPassword("password_02");
+
+        Family family = familyService.createFamily(request);
+
+        assertNotNull(family);
     }
 }

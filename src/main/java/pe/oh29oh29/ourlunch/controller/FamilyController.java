@@ -8,7 +8,7 @@ import pe.oh29oh29.ourlunch.service.FamilyService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/family")
+@RequestMapping("/api/family")
 public class FamilyController {
 
     private final FamilyService familyService;

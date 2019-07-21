@@ -4,15 +4,19 @@ import lombok.Data;
 import org.apache.catalina.connector.Response;
 
 @Data
-public class ResponseDTO {
+public class ResponseDTO<T> {
 
     private int code;
 
     private String message;
 
-    private Object data;
+    private T data;
 
-    public ResponseDTO(Object data) {
+    public ResponseDTO() {
+        this(null);
+    }
+
+    public ResponseDTO(T data) {
         this.code = Response.SC_OK;
         this.message = "success";
         this.data = data;

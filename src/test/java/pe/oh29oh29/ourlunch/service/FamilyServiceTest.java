@@ -47,8 +47,6 @@ public class FamilyServiceTest extends TestSupport {
         Family family = new Family(company, "점심팸이름_01", "http://test.com", DateUtil.now());
         FamilyMembers familyMembers = new FamilyMembers(family, member, "멤버이름_01", true, DateUtil.now());
 
-        family.setCompany(company);
-
         familyMembers.setFamily(family);
         familyMembers.setMember(member);
 
@@ -64,6 +62,7 @@ public class FamilyServiceTest extends TestSupport {
         assertEquals(family.getName(), createdFamily.getName());
         assertEquals(family.getLinkUrl(), createdFamily.getLinkUrl());
         assertEquals(family.getCreateDate(), createdFamily.getCreateDate());
+        assertEquals(family.getCompany().getName(), createdFamily.getCompany().getName());
         assertEquals(familyMembers.getName(), createdFamilyMembers.getName());
         assertEquals(familyMembers.isMaster(), createdFamilyMembers.isMaster());
         assertEquals(familyMembers.getJoinDate(), createdFamilyMembers.getJoinDate());

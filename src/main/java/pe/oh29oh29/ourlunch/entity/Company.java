@@ -10,7 +10,6 @@ import java.io.Serializable;
 @Table(name = "companies")
 @Data
 @RequiredArgsConstructor
-@AllArgsConstructor
 @NoArgsConstructor
 public class Company implements Serializable {
 
@@ -19,14 +18,11 @@ public class Company implements Serializable {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @Column
     @NonNull
     private String name;
 
-    @Column
     private long positionX;
 
-    @Column
     private long positionY;
 
 }

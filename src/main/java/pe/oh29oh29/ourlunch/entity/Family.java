@@ -22,19 +22,15 @@ public class Family implements Serializable {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name = "companyId")
     @NonNull
     private Company company;
 
-    @Column
     @NonNull
     private String name;
 
-    @Column
     @NonNull
     private String linkUrl;
 
-    @Column
     @NonNull
     private String createDate;
 

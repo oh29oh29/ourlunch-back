@@ -10,11 +10,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "families")
+@Table(name = "restaurants")
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Family implements Serializable {
+public class Restaurant implements Serializable {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -23,15 +23,19 @@ public class Family implements Serializable {
 
     @ManyToOne
     @NonNull
-    private Company company;
+    private Family family;
 
     @NonNull
     private String name;
 
     @NonNull
-    private String linkUrl;
+    private String type;
 
     @NonNull
-    private String createDate;
+    private String placeId;
+
+    private String positionX;
+
+    private String positionY;
 
 }

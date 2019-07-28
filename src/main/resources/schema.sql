@@ -85,3 +85,17 @@ CREATE TABLE IF NOT EXISTS restaurant_reviews (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );
+
+-- insert into companies(id, name, positionx, positiony) values('1', '유프리즘', '0', '0');
+--
+-- insert into families(id, company_id, name, link_url, create_date) values ('1', '1', '탈프리즘팸', 'http://localhost', '20190101000000');
+--
+-- insert into members(id, password, sign_up_date) values ('1', '1', '20190101000000');
+-- insert into members(id, password, sign_up_date) values ('2', '1', '20190101000000');
+-- insert into members(id, password, sign_up_date) values ('3', '1', '20190101000000');
+-- insert into members(id, password, sign_up_date) values ('4', '1', '20190101000000');
+--
+-- insert into family_members(id, family_id, member_id, name, is_master, taste, join_date) values ('1', '1', '1', '한평화', 1, '다좋아', '20190201000000');
+-- insert into family_members(id, family_id, member_id, name, is_master, taste, join_date) values ('2', '1', '2', '김응철', 1, '다좋아', '20190201000000');
+-- insert into family_members(id, family_id, member_id, name, is_master, taste, join_date) values ('3', '1', '3', '방성철', 1, '술좋아', '20190201000000');
+-- insert into family_members(id, family_id, member_id, name, is_master, taste, join_date) values ('4', '1', '4', '유정희', 1, '고기좋아', '20190201000000');

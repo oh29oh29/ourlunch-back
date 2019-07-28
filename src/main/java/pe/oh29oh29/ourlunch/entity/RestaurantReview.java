@@ -1,5 +1,6 @@
 package pe.oh29oh29.ourlunch.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -7,31 +8,30 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "families")
+@Table(name = "restaurant_reviews")
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Family {
+public class RestaurantReview {
 
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @NonNull
-    private Company company;
+    private Restaurant restaurant;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @NonNull
+    private FamilyMember familyMember;
 
     @NonNull
-    private String name;
+    private int starScore;
 
     @NonNull
-    private String linkUrl;
-
-    @NonNull
-    private String createDate;
-
+    private String comment;
 }

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pe.oh29oh29.ourlunch.TestSupport;
 import pe.oh29oh29.ourlunch.entity.Company;
 import pe.oh29oh29.ourlunch.entity.Family;
-import pe.oh29oh29.ourlunch.entity.FamilyMembers;
+import pe.oh29oh29.ourlunch.entity.FamilyMember;
 import pe.oh29oh29.ourlunch.entity.Member;
 import pe.oh29oh29.ourlunch.model.RequestDTO;
 import pe.oh29oh29.ourlunch.repository.CompanyRepository;
@@ -35,25 +35,20 @@ public class FamilyServiceTest extends TestSupport {
     @Autowired
     private FamilyMemberRepository familyMemberRepository;
 
-    @Before
-    public void setUp() {
-
-    }
-
     @Test
     public void 점심팸_생성_테스트() {
         Company company = new Company("회사명_01");
         Member member = new Member("id_01", "password_01", DateUtil.now());
         Family family = new Family(company, "점심팸이름_01", "http://test.com", DateUtil.now());
-        FamilyMembers familyMembers = new FamilyMembers(family, member, "멤버이름_01", true, DateUtil.now());
+        FamilyMember familyMember = new FamilyMember(family, member, "멤버이름_01", true, DateUtil.now());
 
-        familyMembers.setFamily(family);
-        familyMembers.setMember(member);
+        familyMember.setFamily(family);
+        familyMember.setMember(member);
 
         Member createdMember = memberRepository.save(member);
         Company createdCompany = companyRepository.save(company);
         Family createdFamily = familyRepository.save(family);
-        FamilyMembers createdFamilyMembers = familyMemberRepository.save(familyMembers);
+        FamilyMember createdFamilyMember = familyMemberRepository.save(familyMember);
 
         assertEquals(member.getId(), createdMember.getId());
         assertEquals(member.getPassword(), createdMember.getPassword());
@@ -63,9 +58,9 @@ public class FamilyServiceTest extends TestSupport {
         assertEquals(family.getLinkUrl(), createdFamily.getLinkUrl());
         assertEquals(family.getCreateDate(), createdFamily.getCreateDate());
         assertEquals(family.getCompany().getName(), createdFamily.getCompany().getName());
-        assertEquals(familyMembers.getName(), createdFamilyMembers.getName());
-        assertEquals(familyMembers.isMaster(), createdFamilyMembers.isMaster());
-        assertEquals(familyMembers.getJoinDate(), createdFamilyMembers.getJoinDate());
+        assertEquals(familyMember.getName(), createdFamilyMember.getName());
+        assertEquals(familyMember.isMaster(), createdFamilyMember.isMaster());
+        assertEquals(familyMember.getJoinDate(), createdFamilyMember.getJoinDate());
 
     }
 

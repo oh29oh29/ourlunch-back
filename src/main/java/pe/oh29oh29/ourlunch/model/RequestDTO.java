@@ -12,6 +12,18 @@ public class RequestDTO {
         private String memberName;
         private String memberPassword;
         private String familyName;
+
+    }
+
+    @Data
+    public static class FamilyJoinRequest {
+        private String memberName;
+        private String taste;
+    }
+
+    @Data
+    public static class FamilyMembersSelectRequest {
+        private String familyId;
     }
 
     @Data
@@ -20,5 +32,6 @@ public class RequestDTO {
         private String name;
         private String type;
         private String placeId;
+
     }
 }

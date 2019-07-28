@@ -27,4 +27,13 @@ public class FamilyController {
         return new ResponseDTO<>(familyService.createFamily(request));
     }
 
+    @ApiOperation(
+            value = "점심팸 멤버 참여 API",
+            notes = "점심팸에 멤버로 참여합니다."
+    )
+    @PostMapping("/member")
+    public ResponseDTO joinFamily(@RequestBody RequestDTO.FamilyJoinRequest request) {
+        familyService.joinFamily(request);
+        return new ResponseDTO();
+    }
 }

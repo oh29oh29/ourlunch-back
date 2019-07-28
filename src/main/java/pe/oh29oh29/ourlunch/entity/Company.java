@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Company implements Serializable {
+public class Company {
 
     @Id
     @GeneratedValue(generator = "UUID")

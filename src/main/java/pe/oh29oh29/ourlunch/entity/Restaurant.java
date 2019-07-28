@@ -14,14 +14,14 @@ import java.io.Serializable;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Restaurant implements Serializable {
+public class Restaurant {
 
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @NonNull
     private Family family;
 

@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Member implements Serializable {
+public class Member {
 
     @Id
     @NonNull

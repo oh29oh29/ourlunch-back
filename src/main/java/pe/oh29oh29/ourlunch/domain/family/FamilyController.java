@@ -1,4 +1,4 @@
-package pe.oh29oh29.ourlunch.controller;
+package pe.oh29oh29.ourlunch.domain.family;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.oh29oh29.ourlunch.entity.Family;
 import pe.oh29oh29.ourlunch.model.RequestDTO;
 import pe.oh29oh29.ourlunch.model.ResponseDTO;
-import pe.oh29oh29.ourlunch.service.FamilyService;
 
 @RestController
 @RequiredArgsConstructor

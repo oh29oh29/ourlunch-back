@@ -1,11 +1,9 @@
-package pe.oh29oh29.ourlunch.service;
+package pe.oh29oh29.ourlunch.domain.restaurant;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pe.oh29oh29.ourlunch.entity.Family;
-import pe.oh29oh29.ourlunch.entity.Restaurant;
-import pe.oh29oh29.ourlunch.model.RequestDTO;
-import pe.oh29oh29.ourlunch.repository.RestaurantRepository;
+import pe.oh29oh29.ourlunch.domain.family.Family;
+import pe.oh29oh29.ourlunch.domain.restaurant.dto.RequestDTO;
 
 @Service
 @RequiredArgsConstructor

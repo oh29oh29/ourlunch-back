@@ -1,7 +1,6 @@
-package pe.oh29oh29.ourlunch.model;
+package pe.oh29oh29.ourlunch.domain.family.dto;
 
 import lombok.Data;
-
 
 public class RequestDTO {
 
@@ -19,19 +18,5 @@ public class RequestDTO {
     public static class FamilyJoinRequest {
         private String memberName;
         private String taste;
-    }
-
-    @Data
-    public static class FamilyMembersSelectRequest {
-        private String familyId;
-    }
-
-    @Data
-    public static class RestaurantCreationRequest {
-        private String familyId;
-        private String name;
-        private String type;
-        private String placeId;
-
     }
 }

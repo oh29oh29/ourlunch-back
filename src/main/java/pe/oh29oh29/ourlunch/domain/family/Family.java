@@ -1,37 +1,43 @@
-package pe.oh29oh29.ourlunch.entity;
+package pe.oh29oh29.ourlunch.domain.family;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import pe.oh29oh29.ourlunch.entity.Company;
+import pe.oh29oh29.ourlunch.entity.Restaurant;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name = "restaurant_reviews")
+@Table(name = "families")
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class RestaurantReview {
+public class Family {
 
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @NonNull
-    private Restaurant restaurant;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @NonNull
-    private FamilyMember familyMember;
+    private Company company;
 
     @NonNull
-    private int starScore;
+    private String name;
+
+    @OneToMany(mappedBy = "family")
+    private List<Restaurant> restaurant;
 
     @NonNull
-    private String comment;
+    private String linkUrl;
+
+    @NonNull
+    private LocalDateTime createDate;
+
 }

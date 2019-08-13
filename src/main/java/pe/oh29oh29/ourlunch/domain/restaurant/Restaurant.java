@@ -1,13 +1,13 @@
-package pe.oh29oh29.ourlunch.entity;
+package pe.oh29oh29.ourlunch.domain.restaurant;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import pe.oh29oh29.ourlunch.domain.family.Family;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "restaurants")
@@ -21,8 +21,8 @@ public class Restaurant {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
     private Family family;
 
     @NonNull

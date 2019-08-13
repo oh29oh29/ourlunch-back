@@ -1,37 +1,33 @@
-package pe.oh29oh29.ourlunch.entity;
+package pe.oh29oh29.ourlunch.domain.restaurantReview;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import pe.oh29oh29.ourlunch.domain.restaurant.Restaurant;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "families")
+@Table(name = "restaurant_reviews")
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Family {
+public class RestaurantReview {
 
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @ManyToOne
     @NonNull
-    private Company company;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Restaurant restaurant;
 
     @NonNull
-    private String name;
+    private int starScore;
 
     @NonNull
-    private String linkUrl;
-
-    @NonNull
-    private String createDate;
-
+    private String comment;
 }

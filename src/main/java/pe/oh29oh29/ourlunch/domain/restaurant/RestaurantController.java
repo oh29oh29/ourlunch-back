@@ -1,4 +1,4 @@
-package pe.oh29oh29.ourlunch.controller;
+package pe.oh29oh29.ourlunch.domain.restaurant;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pe.oh29oh29.ourlunch.model.RequestDTO;
 import pe.oh29oh29.ourlunch.model.ResponseDTO;
-import pe.oh29oh29.ourlunch.service.RestaurantService;
 
 @RestController
 @RequiredArgsConstructor

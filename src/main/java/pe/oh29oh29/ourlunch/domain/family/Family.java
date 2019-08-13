@@ -5,8 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import pe.oh29oh29.ourlunch.entity.Company;
-import pe.oh29oh29.ourlunch.entity.Restaurant;
+import pe.oh29oh29.ourlunch.domain.company.Company;
+import pe.oh29oh29.ourlunch.domain.restaurant.Restaurant;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

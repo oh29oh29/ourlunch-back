@@ -3,10 +3,8 @@ package pe.oh29oh29.ourlunch.domain.family;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import pe.oh29oh29.ourlunch.domain.company.CompanyRepository;
 import pe.oh29oh29.ourlunch.domain.company.CompanyService;
 import pe.oh29oh29.ourlunch.domain.family.dto.RequestDTO;
-import pe.oh29oh29.ourlunch.domain.member.MemberRepository;
 import pe.oh29oh29.ourlunch.domain.member.MemberService;
 
 import java.util.UUID;

@@ -2,9 +2,7 @@ package pe.oh29oh29.ourlunch.service;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import pe.oh29oh29.ourlunch.TestSupport;
-import pe.oh29oh29.ourlunch.domain.restaurant.RestaurantService;
 
 public class RestaurantServiceTest extends TestSupport {
 

@@ -9,9 +9,6 @@ import pe.oh29oh29.ourlunch.domain.restaurant.RestaurantService;
 public class RestaurantServiceTest extends TestSupport {
 
 
-    @Autowired
-    private RestaurantService restaurantService;
-
     @Before
     public void setUp() {
 

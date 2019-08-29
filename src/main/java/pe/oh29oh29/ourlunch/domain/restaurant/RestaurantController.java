@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.oh29oh29.ourlunch.domain.restaurant.dto.RequestDTO;
-import pe.oh29oh29.ourlunch.model.ResponseDTO;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,9 +19,7 @@ public class RestaurantController {
         notes = "식당을 등록합니다."
     )
     @PostMapping("")
-    public ResponseDTO addRestaurant(@RequestBody RequestDTO.RestaurantCreationRequest request) {
-        restaurantService.addRestaurant(request);
-        return new ResponseDTO();
+    public void addRestaurant() {
     }
 
 

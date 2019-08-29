@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.oh29oh29.ourlunch.domain.family.dto.RequestDTO;
+import pe.oh29oh29.ourlunch.domain.company.CompanyService;
 import pe.oh29oh29.ourlunch.domain.member.MemberService;
-import pe.oh29oh29.ourlunch.model.ResponseDTO;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,16 +15,16 @@ import pe.oh29oh29.ourlunch.model.ResponseDTO;
 public class FamilyController {
 
     private final FamilyService familyService;
-
     private final MemberService memberService;
+    private final CompanyService companyService;
 
     @ApiOperation(
             value = "점심팸 생성 API",
             notes = "점심팸을 생성합니다."
     )
     @PostMapping("")
-    public ResponseDTO<Family> createFamily(@RequestBody RequestDTO.FamilyCreationRequest request) {
-        return new ResponseDTO<>(familyService.createFamily(request));
+    public FamilyDTO.Creation.Res createFamily(@RequestBody FamilyDTO.Creation.Req request) {
+        return FamilyDTO.Creation.Res.builder().build();
     }
 
     @ApiOperation(
@@ -33,8 +32,8 @@ public class FamilyController {
             notes = "점심팸에 멤버로 참여합니다."
     )
     @PostMapping("/member")
-    public ResponseDTO joinFamily(@RequestBody RequestDTO.FamilyJoinRequest request) {
+    public FamilyDTO.Join.Res joinFamily(@RequestBody FamilyDTO.Join.Req request) {
         memberService.joinFamily();
-        return new ResponseDTO();
+        return FamilyDTO.Join.Res.builder().build();
     }
 }

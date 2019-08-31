@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 import pe.oh29oh29.ourlunch.domain.family.Family;
 
 import javax.persistence.*;
@@ -17,9 +16,8 @@ import javax.persistence.*;
 public class Restaurant {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)

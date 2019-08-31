@@ -9,8 +9,8 @@ public class CompanyService {
 
     private final CompanyRepository companyRepository;
 
-    public Company addCompany() {
-        return null;
+    public Company addCompany(final String name) {
+        return companyRepository.save(Company.newInstance(name));
     }
 
 }

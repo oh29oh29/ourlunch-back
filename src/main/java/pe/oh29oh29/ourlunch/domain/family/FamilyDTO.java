@@ -11,6 +11,7 @@ class FamilyDTO {
         @Getter
         @Setter
         static class Req {
+            private String companyName;
             private String familyName;
         }
 

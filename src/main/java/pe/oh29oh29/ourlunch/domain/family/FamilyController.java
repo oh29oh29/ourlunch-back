@@ -24,7 +24,11 @@ public class FamilyController {
     )
     @PostMapping("")
     public FamilyDTO.Creation.Res createFamily(@RequestBody FamilyDTO.Creation.Req request) {
-        return FamilyDTO.Creation.Res.builder().build();
+        Family family = familyService.createFamily(request.getCompanyName(), request.getFamilyName());
+        return FamilyDTO.Creation.Res
+                .builder()
+                .linkUrl(family.getLinkUrl())
+                .build();
     }
 
     @ApiOperation(

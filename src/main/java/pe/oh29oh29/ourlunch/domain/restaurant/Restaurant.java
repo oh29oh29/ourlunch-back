@@ -36,4 +36,10 @@ public class Restaurant {
 
     private String positionY;
 
+    public static Restaurant newInstance(final Family family,
+                                         final String name,
+                                         final String positionX,
+                                         final String positionY) {
+        return new Restaurant(family, name, positionX, positionY);
+    }
 }

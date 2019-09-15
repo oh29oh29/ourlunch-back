@@ -19,9 +19,9 @@ public class RestaurantController {
         notes = "식당을 등록합니다."
     )
     @PostMapping("")
-    public RestaurantDTO.Addition.Res addRestaurant(@RequestBody RestaurantDTO.Addition.Req request) {
+    public String addRestaurant(@RequestBody RestaurantDTO.Addition.Req request) {
         restaurantService.addRestaurant(request.getFamilyName(), request.getRestaurantName(), request.getPositionX(), request.getPositionY());
-        return RestaurantDTO.Addition.Res.builder().build();
+        return "success";
     }
 
 }

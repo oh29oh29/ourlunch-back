@@ -3,7 +3,6 @@ package pe.oh29oh29.ourlunch.domain.restaurant;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import pe.oh29oh29.ourlunch.domain.family.Family;
 
 import javax.persistence.*;
@@ -11,7 +10,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "restaurants")
 @Data
-@RequiredArgsConstructor
 @NoArgsConstructor
 public class Restaurant {
 
@@ -26,15 +24,22 @@ public class Restaurant {
     @NonNull
     private String name;
 
-    @NonNull
+    //@NonNull
     private String type;
 
-    @NonNull
+    //@NonNull
     private String placeId;
 
     private String positionX;
 
     private String positionY;
+
+    public Restaurant(@NonNull Family family, @NonNull String name, String positionX, String positionY) {
+        this.family = family;
+        this.name = name;
+        this.positionX = positionX;
+        this.positionY = positionY;
+    }
 
     public static Restaurant newInstance(final Family family,
                                          final String name,

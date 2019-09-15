@@ -1,6 +1,7 @@
 package pe.oh29oh29.ourlunch.domain.company;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "companies")
 @Data
+@NoArgsConstructor
 public class Company {
 
     private Company (final String name) {

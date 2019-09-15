@@ -18,6 +18,8 @@ public class RestaurantDTO {
         }
 
         @Builder
+        @Getter
+        @Setter
         static class Res {
         }
 

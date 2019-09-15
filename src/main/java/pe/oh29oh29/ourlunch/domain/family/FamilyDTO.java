@@ -16,6 +16,8 @@ class FamilyDTO {
         }
 
         @Builder
+        @Getter
+        @Setter
         static class Res {
             private String linkUrl;
         }

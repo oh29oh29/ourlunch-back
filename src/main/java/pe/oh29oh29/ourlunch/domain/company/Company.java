@@ -1,19 +1,19 @@
 package pe.oh29oh29.ourlunch.domain.company;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+
 @Entity
 @Table(name = "companies")
-@Data
-@NoArgsConstructor
 public class Company {
 
-    private Company (final String name) {
-        this.name = name;
+    public static Company of (final String name) {
+        return new Company(name);
     }
 
     @Id
@@ -26,9 +26,5 @@ public class Company {
     private long positionX;
 
     private long positionY;
-
-    public static Company newInstance (final String name) {
-        return new Company(name);
-    }
 
 }

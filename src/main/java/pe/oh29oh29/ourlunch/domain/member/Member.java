@@ -1,30 +1,26 @@
 package pe.oh29oh29.ourlunch.domain.member;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import pe.oh29oh29.ourlunch.domain.family.Family;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
+@Data
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 
 @Entity
 @Table(name = "members")
-@Data
-@RequiredArgsConstructor
-@NoArgsConstructor
 public class Member {
+
+    public static Member of (final String id, final String name) {
+
+        return new Member(id, name, LocalDateTime.now());
+    }
 
     @Id
     @NonNull
     private String id;
-
-    @NonNull
-    private String password;
 
     @NonNull
     private String name;
@@ -35,5 +31,5 @@ public class Member {
     private boolean isMaster;
 
     @NonNull
-    private String signUpDate;
+    private LocalDateTime signUpDate;
 }

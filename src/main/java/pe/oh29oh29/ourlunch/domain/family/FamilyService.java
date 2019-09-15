@@ -9,8 +9,9 @@ import pe.oh29oh29.ourlunch.domain.company.CompanyService;
 
 import java.util.UUID;
 
-@Service
 @RequiredArgsConstructor
+
+@Service
 @Transactional
 public class FamilyService {
 
@@ -23,7 +24,7 @@ public class FamilyService {
     Family createFamily(final String companyName,
                         final String familyName) {
         final Company company = companyService.addCompany(companyName);
-        final Family family = familyRepository.save(Family.newInstance(company, familyName, generateFamilyLinkUrl()));
+        final Family family = familyRepository.save(Family.of(company, familyName, generateFamilyLinkUrl()));
         family.setLinkUrl(ourlunchUrl + family.getLinkUrl());
         return family;
     }

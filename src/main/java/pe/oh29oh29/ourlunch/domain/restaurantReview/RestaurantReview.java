@@ -1,18 +1,16 @@
 package pe.oh29oh29.ourlunch.domain.restaurantReview;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import pe.oh29oh29.ourlunch.domain.restaurant.Restaurant;
 
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+
 @Entity
 @Table(name = "restaurant_reviews")
-@Data
-@RequiredArgsConstructor
-@NoArgsConstructor
 public class RestaurantReview {
 
     @Id
@@ -26,6 +24,5 @@ public class RestaurantReview {
     @NonNull
     private int starScore;
 
-    @NonNull
     private String comment;
 }

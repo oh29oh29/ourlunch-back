@@ -7,8 +7,9 @@ import pe.oh29oh29.ourlunch.domain.family.FamilyRepository;
 
 import java.util.List;
 
-@Service
 @RequiredArgsConstructor
+
+@Service
 public class RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
@@ -20,7 +21,7 @@ public class RestaurantService {
                        final String positionY) {
 
         Family family = familyRepository.findByName(familyName);
-        Restaurant restaurant = restaurantRepository.save(Restaurant.newInstance(family, restaurantName, positionX, positionY));
+        Restaurant restaurant = restaurantRepository.save(Restaurant.of(family, restaurantName, positionX, positionY));
         List<Restaurant> restaurantList = family.getRestaurant();
         restaurantList.add(restaurant);
         family.setRestaurant(restaurantList);

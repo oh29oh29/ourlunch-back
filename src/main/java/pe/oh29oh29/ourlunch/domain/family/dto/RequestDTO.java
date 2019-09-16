@@ -12,9 +12,5 @@ public class RequestDTO {
         private String familyName;
     }
 
-    @Getter
-    @Setter
-    public static class Join {
 
-    }
 }

@@ -15,4 +15,8 @@ public class CompanyService {
         return companyRepository.save(Company.of(name));
     }
 
+    public Company findByName(final String name) {
+
+        return companyRepository.findByName(name);
+    }
 }

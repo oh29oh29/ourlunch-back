@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import pe.oh29oh29.ourlunch.TestSupport;
 
-public class RestaurantServiceTest extends TestSupport {
+public class RestaurantCommandServiceTest extends TestSupport {
 
 
     @Before

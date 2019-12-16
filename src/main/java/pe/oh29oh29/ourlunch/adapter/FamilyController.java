@@ -1,4 +1,4 @@
-package pe.oh29oh29.ourlunch.domain.family;
+package pe.oh29oh29.ourlunch.adapter;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.oh29oh29.ourlunch.domain.family.dto.RequestDTO;
-import pe.oh29oh29.ourlunch.domain.family.dto.ResponseDTO;
+import pe.oh29oh29.ourlunch.application.FamilyCommandService;
+import pe.oh29oh29.ourlunch.application.value.FamilyCommand;
+import pe.oh29oh29.ourlunch.application.value.FamilyRepresentation;
+import pe.oh29oh29.ourlunch.domain.family.Family;
 import pe.oh29oh29.ourlunch.model.Response;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -18,23 +20,28 @@ import springfox.documentation.annotations.ApiIgnore;
 @RequestMapping("/api/family")
 public class FamilyController {
 
-    private final FamilyService familyService;
+    private final FamilyCommandService familyCommandService;
 
     @ApiOperation(
             value = "점심팸 생성 API",
             notes = "점심팸을 생성합니다."
     )
     @PostMapping
-    public Response<ResponseDTO.Creations> createFamily(@RequestBody final RequestDTO.Creation request,
-                                                       @ApiIgnore final OAuth2AuthenticationToken authentication) {
-
+    public Response<FamilyRepresentation.Creations> createFamily(
+            @RequestBody final FamilyCommand.Creation command,
+            @ApiIgnore final OAuth2AuthenticationToken authentication
+    ) {
 //        final String userId = authentication.getPrincipal().getName();  // Production
         final String userId = "1";  // Test
 
-        final Family family = familyService.createFamily(userId, request.getCompanyName(), request.getFamilyName());
+        final Family family = familyCommandService.createFamily(
+                userId,
+                command.getCompanyName(),
+                command.getFamilyName()
+        );
 
         return new Response<>(
-                ResponseDTO.Creations
+                FamilyRepresentation.Creations
                         .builder()
                         .linkUrl(family.getLinkUrl())
                         .build()

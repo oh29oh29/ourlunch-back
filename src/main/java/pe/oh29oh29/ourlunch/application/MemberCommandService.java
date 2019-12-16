@@ -1,13 +1,15 @@
-package pe.oh29oh29.ourlunch.domain.member;
+package pe.oh29oh29.ourlunch.application;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pe.oh29oh29.ourlunch.domain.family.Family;
+import pe.oh29oh29.ourlunch.domain.member.Member;
+import pe.oh29oh29.ourlunch.domain.member.MemberRepository;
 
 @RequiredArgsConstructor
 
 @Service
-public class MemberService {
+public class MemberCommandService {
 
     private final MemberRepository memberRepository;
 

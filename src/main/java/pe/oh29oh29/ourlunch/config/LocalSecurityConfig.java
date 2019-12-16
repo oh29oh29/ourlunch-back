@@ -6,7 +6,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
-@Profile("local")
+@Profile("!local")
 @EnableWebSecurity
 public class LocalSecurityConfig extends SecurityConfig {
 

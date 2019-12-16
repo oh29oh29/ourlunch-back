@@ -1,9 +1,9 @@
-package pe.oh29oh29.ourlunch.domain.restaurant.dto;
+package pe.oh29oh29.ourlunch.application.value;
 
 import lombok.Getter;
 import lombok.Setter;
 
-public class RequestDTO {
+public class RestaurantCommand {
 
     @Getter
     @Setter

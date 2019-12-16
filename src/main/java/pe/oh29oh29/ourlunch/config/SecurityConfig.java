@@ -12,11 +12,17 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import pe.oh29oh29.ourlunch.oauth2.CustomOAuth2Provider;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Profile("!local")
+
+@Profile("local")
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -42,6 +48,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
+
+        List<String> a = Arrays.stream(new String[]{"1"}).filter(str -> str.equals("t")).collect(Collectors.toList());
+
+        http.csrf().disable();
     }
 
     @Bean
@@ -59,5 +69,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 );
 
         return new InMemoryClientRegistrationRepository(clientRegistrations);
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("*");
+        configuration.addAllowedMethod("*");
+        configuration.addAllowedHeader("*");
+        configuration.setAllowCredentials(true);
+        configuration.setMaxAge(3600L);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 }

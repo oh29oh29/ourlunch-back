@@ -1,9 +1,9 @@
-package pe.oh29oh29.ourlunch.domain.family.dto;
+package pe.oh29oh29.ourlunch.application.value;
 
 import lombok.Getter;
 import lombok.Setter;
 
-public class RequestDTO {
+public class FamilyCommand {
 
     @Getter
     @Setter
@@ -11,6 +11,4 @@ public class RequestDTO {
         private String companyName;
         private String familyName;
     }
-
-
 }

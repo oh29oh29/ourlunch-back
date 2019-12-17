@@ -13,10 +13,12 @@ import javax.persistence.*;
 @Table(name = "restaurants")
 public class Restaurant {
 
-    public static Restaurant of(final Family family,
-                                final String name,
-                                final String positionX,
-                                final String positionY) {
+    public static Restaurant of(
+            final Family family,
+            final String name,
+            final String positionX,
+            final String positionY
+    ) {
         return new Restaurant(family, name, positionX, positionY);
     }
 

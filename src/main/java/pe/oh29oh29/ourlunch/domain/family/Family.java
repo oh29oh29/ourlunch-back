@@ -16,9 +16,11 @@ import java.util.List;
 @Table(name = "families")
 public class Family {
 
-    public static Family of(final Company company,
-                            final String name,
-                            final String linkUrl) {
+    public static Family of(
+            final Company company,
+            final String name,
+            final String linkUrl
+    ) {
         return new Family(company, name, linkUrl, LocalDateTime.now());
     }
 

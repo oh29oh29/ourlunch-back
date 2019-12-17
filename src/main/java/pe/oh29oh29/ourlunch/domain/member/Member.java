@@ -2,7 +2,11 @@ package pe.oh29oh29.ourlunch.domain.member;
 
 import lombok.*;
 import pe.oh29oh29.ourlunch.domain.family.Family;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Data
@@ -13,8 +17,10 @@ import java.time.LocalDateTime;
 @Table(name = "members")
 public class Member {
 
-    public static Member of (final String id, final String name) {
-
+    public static Member of(
+            final String id,
+            final String name
+    ) {
         return new Member(id, name, LocalDateTime.now());
     }
 

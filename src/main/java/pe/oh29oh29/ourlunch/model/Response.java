@@ -11,9 +11,17 @@ public class Response<T> {
 
     private T data;
 
+    private Response() {
+        this(null);
+    }
+
     public Response(T data) {
         this.code = org.apache.catalina.connector.Response.SC_OK;
-        this.message = "success";
+        this.message = "SUCCESS";
         this.data = data;
+    }
+
+    public static Response ok() {
+        return new Response();
     }
 }

@@ -2,14 +2,16 @@ package pe.oh29oh29.ourlunch.domain.company;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 
-@Entity
-@Table(name = "companies")
+@Entity(name = "companies")
 public class Company {
 
     public static Company of (final String name) {

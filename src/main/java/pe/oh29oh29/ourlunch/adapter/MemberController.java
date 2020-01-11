@@ -30,7 +30,10 @@ public class MemberController {
             @RequestBody final MemberCommand.Join command,
             @ApiIgnore final OAuth2AuthenticationToken authentication
     ) {
-//        final String userId = authentication.getPrincipal().getName();  // Production
+        /*
+        * TODO production code
+        * final String userId = authentication.getPrincipal().getName();
+        * */
         final String userId = "1";  // Test
 
         return new Response<>(

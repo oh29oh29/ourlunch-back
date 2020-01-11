@@ -4,12 +4,17 @@ import lombok.Getter;
 import lombok.Setter;
 import pe.oh29oh29.ourlunch.domain.company.Company;
 
+import javax.validation.constraints.NotBlank;
+
 public class FamilyCommand {
 
     @Getter
     @Setter
     public static class Creation {
-        private String familyName;
-        private Company company;
+
+        @NotBlank
+        private String familyName;  // 팸 이름
+        @NotBlank
+        private Company company;    // 소속 회사
     }
 }

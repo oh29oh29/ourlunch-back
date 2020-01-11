@@ -12,6 +12,8 @@ import pe.oh29oh29.ourlunch.application.value.FamilyRepresentation;
 import pe.oh29oh29.ourlunch.domain.family.Family;
 import pe.oh29oh29.ourlunch.model.Response;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 
 @RestController
@@ -26,7 +28,7 @@ public class FamilyController {
     )
     @PostMapping
     public Response<FamilyRepresentation.Creations> createFamily(
-            @RequestBody final FamilyCommand.Creation command
+            @Valid @RequestBody final FamilyCommand.Creation command
     ) {
         final Family family = familyCommandService.createFamily(
                 command.getFamilyName(),

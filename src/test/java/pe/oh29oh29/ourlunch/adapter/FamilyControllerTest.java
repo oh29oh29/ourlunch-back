@@ -1,4 +1,4 @@
-package pe.oh29oh29.ourlunch.controller;
+package pe.oh29oh29.ourlunch.adapter;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

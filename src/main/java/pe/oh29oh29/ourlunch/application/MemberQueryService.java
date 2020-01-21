@@ -18,4 +18,8 @@ public class MemberQueryService {
 
         return memberRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
+
+    public boolean exist(final String id) {
+        return memberRepository.findById(id).isPresent();
+    }
 }

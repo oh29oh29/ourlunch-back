@@ -23,10 +23,6 @@ public class MemberCommandService {
         member.setFamily(family);
     }
 
-    public boolean exist(final String id) {
-        return memberRepository.findById(id).isPresent();
-    }
-
     @Transactional
     public Member signUp(
             final String id,

@@ -51,8 +51,8 @@ public class OAuth2Controller {
         if (!memberQueryService.exist((id))) {
             memberCommandService.signUp(id, (String) userInfo.get("nickname"));
             response.sendRedirect("/startFamily");
+        } else {
+            response.sendRedirect("/main");
         }
-
-        response.sendRedirect("/main");
     }
 }

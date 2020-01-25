@@ -1,27 +1,28 @@
 package pe.oh29oh29.ourlunch.domain.family;
 
-import lombok.*;
+import lombok.Data;
 import pe.oh29oh29.ourlunch.domain.company.Company;
 import pe.oh29oh29.ourlunch.domain.restaurant.Restaurant;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 
-@Entity
-@Table(name = "families")
+@Entity(name = "families")
 public class Family {
 
-    public static Family of(
-            final Company company,
-            final String name,
-            final String linkUrl
+    public Family(
+            @NotNull Company company,
+            @NotNull String name,
+            @NotNull String linkUrl
     ) {
-        return new Family(company, name, linkUrl, LocalDateTime.now());
+        this.company = company;
+        this.name = name;
+        this.linkUrl = linkUrl;
+        this.createDate = LocalDateTime.now();
     }
 
     @Id
@@ -29,19 +30,19 @@ public class Family {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @NonNull
+    @NotNull
     private Company company;
 
-    @NonNull
+    @NotNull
     private String name;
 
     @OneToMany(mappedBy = "family")
     private List<Restaurant> restaurant;
 
-    @NonNull
+    @NotNull
     private String linkUrl;
 
-    @NonNull
+    @NotNull
     private LocalDateTime createDate;
 
 }

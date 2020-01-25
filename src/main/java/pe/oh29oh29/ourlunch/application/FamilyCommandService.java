@@ -22,11 +22,7 @@ public class FamilyCommandService {
             final Company company
     ) {
         return familyRepository.save(
-                Family.of(
-                        company,
-                        familyName,
-                        generateFamilyLinkUrl()
-                )
+                new Family(company, familyName, generateFamilyLinkUrl())
         );
     }
 

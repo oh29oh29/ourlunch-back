@@ -1,27 +1,28 @@
 package pe.oh29oh29.ourlunch.domain.restaurantReview;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import pe.oh29oh29.ourlunch.domain.restaurant.Restaurant;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 
-@Entity
-@Table(name = "restaurant_reviews")
+@Entity(name = "restaurant_reviews")
 public class RestaurantReview {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     private Restaurant restaurant;
 
-    @NonNull
+    @NotNull
     private int starScore;
 
     private String comment;

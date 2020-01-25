@@ -15,7 +15,6 @@ public class MemberQueryService {
 
     @Transactional(readOnly = true)
     public Member findById(final String id) {
-
         return memberRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 

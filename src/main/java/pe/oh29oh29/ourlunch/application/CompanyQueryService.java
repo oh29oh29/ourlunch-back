@@ -13,7 +13,6 @@ public class CompanyQueryService {
     private final CompanyRepository companyRepository;
 
     public Company findByName(final String name) {
-
         return companyRepository.findByName(name);
     }
 }

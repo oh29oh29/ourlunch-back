@@ -1,41 +1,44 @@
 package pe.oh29oh29.ourlunch.domain.member;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import pe.oh29oh29.ourlunch.domain.family.Family;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 
-@Entity
-@Table(name = "members")
+@Entity(name = "members")
 public class Member {
 
-    public static Member of(
-            final String id,
-            final String name
+    public Member(
+            @NotNull String id,
+            @NotNull String name
     ) {
-        return new Member(id, name, LocalDateTime.now());
+        this.id = id;
+        this.name = name;
+        this.signUpDate = LocalDateTime.now();
     }
 
     @Id
-    @NonNull
     private String id;
 
-    @NonNull
+    @NotNull
     private String name;
 
     @OneToOne
     private Family family;
 
+    private String appetite;
+
     private boolean isMaster;
 
-    @NonNull
+    @NotNull
     private LocalDateTime signUpDate;
 }

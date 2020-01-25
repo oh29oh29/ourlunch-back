@@ -29,9 +29,7 @@ public class RestaurantController {
     ) {
         restaurantCommandService.addRestaurant(
                 command.getFamilyName(),
-                command.getRestaurantName(),
-                command.getPositionX(),
-                command.getPositionY()
+                command.getRestaurantName()
         );
         return new Response<>(
                 RestaurantRepresentation.Addition

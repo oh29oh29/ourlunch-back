@@ -1,45 +1,40 @@
 package pe.oh29oh29.ourlunch.domain.restaurant;
 
-import lombok.*;
+import lombok.Data;
 import pe.oh29oh29.ourlunch.domain.family.Family;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Data
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 
-@Entity
-@Table(name = "restaurants")
+@Entity(name = "restaurants")
 public class Restaurant {
 
-    public static Restaurant of(
-            final Family family,
-            final String name,
-            final String positionX,
-            final String positionY
+    public Restaurant(
+            @NotNull Family family,
+            @NotNull String name
     ) {
-        return new Restaurant(family, name, positionX, positionY);
+        this.family = family;
+        this.name = name;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     private Family family;
 
-    @NonNull
+    @NotNull
     private String name;
 
     private String type;
 
     private String placeId;
 
-    @NonNull
     private String positionX;
 
-    @NonNull
     private String positionY;
 }

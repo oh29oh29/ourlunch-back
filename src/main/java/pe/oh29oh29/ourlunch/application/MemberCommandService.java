@@ -28,7 +28,7 @@ public class MemberCommandService {
             final String id,
             final String nickName
     ) {
-        return memberRepository.save(Member.of(id, nickName));
+        return memberRepository.save(new Member(id, nickName));
     }
 
     public Member findById(final String id) {
@@ -38,6 +38,8 @@ public class MemberCommandService {
     @Transactional
     public void updateFamilyWithMaster(
             final String userId,
+            final String userName,
+            final String appetite,
             final Family family
     ) {
         final Member member =
@@ -45,6 +47,8 @@ public class MemberCommandService {
                         .findById(userId)
                         .orElseGet(() -> signUp(userId, ""));
 
+        member.setName(userName);
+        member.setAppetite(appetite);
         member.setFamily(family);
         member.setMaster(true);
     }

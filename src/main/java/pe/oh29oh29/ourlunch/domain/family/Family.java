@@ -1,6 +1,8 @@
 package pe.oh29oh29.ourlunch.domain.family;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import pe.oh29oh29.ourlunch.domain.company.Company;
 import pe.oh29oh29.ourlunch.domain.restaurant.Restaurant;
 
@@ -10,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 
 @Entity(name = "families")
 public class Family {

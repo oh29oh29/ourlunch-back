@@ -13,23 +13,25 @@ import pe.oh29oh29.ourlunch.domain.family.Family;
 public class InitialRegistrationFacade {
 
     private final FamilyCommandService familyCommandService;
-    private final CompanyCommandService companyCommandService;
+    private final CompanyQueryService companyQueryService;
     private final MemberCommandService memberCommandService;
 
     @Value("${ourlunch.url}")
     private String ourlunchUrl;
 
     @Transactional
-    public void regist(
+    public Family regist(
             final String userId,
             final String userName,
             final String appetite,
             final String companyName,
             final String familyName
     ) {
-        final Company company = companyCommandService.addCompany(companyName);
+        final Company company = companyQueryService.findByNameOrSave(companyName);
         final Family family = familyCommandService.createFamily(familyName, company);
         memberCommandService.updateFamilyWithMaster(userId, userName, appetite, family);
+
+        return family;
     }
 
 }

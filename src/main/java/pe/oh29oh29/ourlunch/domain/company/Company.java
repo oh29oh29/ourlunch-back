@@ -1,6 +1,8 @@
 package pe.oh29oh29.ourlunch.domain.company;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Data
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 
 @Entity(name = "companies")
 public class Company {

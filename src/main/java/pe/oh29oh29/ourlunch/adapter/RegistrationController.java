@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pe.oh29oh29.ourlunch.application.InitialRegistrationFacade;
 import pe.oh29oh29.ourlunch.application.value.InitalRegistrationCommand;
+import pe.oh29oh29.ourlunch.application.value.InitalRegistrationRepresentation;
+import pe.oh29oh29.ourlunch.domain.family.Family;
 import pe.oh29oh29.ourlunch.model.Response;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -27,7 +29,7 @@ public class RegistrationController {
             notes = "점심팸을 생성합니다."
     )
     @PostMapping
-    public Response regist(
+    public Response<InitalRegistrationRepresentation.Regist> regist(
             @ApiIgnore final OAuth2AuthenticationToken authentication,
             @Valid @RequestBody final InitalRegistrationCommand.Regist command
     ) {
@@ -35,9 +37,9 @@ public class RegistrationController {
          * production code:
          * final String userId = authentication.getPrincipal().getName();
          * */
-        final String userId = "testUserId";
+        final String userId = command.getUserName();
 
-        initialRegistrationFacade.regist(
+        Family registedFamily = initialRegistrationFacade.regist(
                 userId,
                 command.getUserName(),
                 command.getAppetite(),
@@ -45,6 +47,11 @@ public class RegistrationController {
                 command.getFamilyName()
         );
 
-        return Response.ok();
+        return new Response<>(
+                InitalRegistrationRepresentation.Regist
+                        .builder()
+                        .linkUrl(registedFamily.getLinkUrl())
+                        .build()
+        );
     }
 }

@@ -21,5 +21,11 @@ spring:
     hibernate:
       ddl-auto: validate
 
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
+
 ourlunch:
   url: http://ourlunch.com/

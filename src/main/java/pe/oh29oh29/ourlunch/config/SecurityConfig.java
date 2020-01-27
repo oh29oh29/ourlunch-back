@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import pe.oh29oh29.ourlunch.oauth2.CustomOAuth2Provider;
 
 import java.util.List;
@@ -34,21 +33,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         );
     }
 
+    /**
+     * Production
+     * */
+//    @Override
+//    public void configure(HttpSecurity http) throws Exception {
+//
+//        http.authorizeRequests()
+//                .antMatchers("/", "/login/**", "/oauth2/**", "/console/**").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .oauth2Login()
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/login/success")
+//                .and()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
+//
+//        http.csrf().disable();
+//    }
+
+    /**
+     * Developement
+     * */
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/", "/login/**", "/oauth2/**", "/console/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .oauth2Login()
-                .loginPage("/login")
-                .defaultSuccessUrl("/login/success")
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
+                .anyRequest().permitAll();
 
         http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 
     @Bean

@@ -1,6 +1,5 @@
 package pe.oh29oh29.ourlunch.domain.family;
 
-import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pe.oh29oh29.ourlunch.domain.company.Company;
@@ -12,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
 
 @Entity(name = "families")
 public class Family {
@@ -32,14 +31,14 @@ public class Family {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @NotNull
     private Company company;
 
     @NotNull
     private String name;
 
-    @OneToMany(mappedBy = "family")
+    @OneToMany(mappedBy = "family", fetch = FetchType.LAZY)
     private List<Restaurant> restaurant;
 
     @NotNull

@@ -50,6 +50,7 @@ public class RegistrationController {
         return new Response<>(
                 InitalRegistrationRepresentation.Regist
                         .builder()
+                        .familyId(registedFamily.getId())
                         .linkUrl(registedFamily.getLinkUrl())
                         .build()
         );

@@ -8,6 +8,7 @@ public class InitalRegistrationRepresentation {
     @Builder
     @Getter
     public static class Regist {
+        private Long familyId;
         private String linkUrl;
     }
 }

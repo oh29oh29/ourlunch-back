@@ -14,6 +14,8 @@ spring:
   jpa:
     properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
     generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
 
 ourlunch:
   url: http://localhost:8080/

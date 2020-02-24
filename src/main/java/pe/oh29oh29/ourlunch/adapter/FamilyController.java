@@ -38,6 +38,7 @@ public class FamilyController {
                             .builder()
                             .id(member.getId())
                             .name(member.getName())
+                            .appetite(member.getAppetite())
                             .build()
             );
         }

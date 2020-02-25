@@ -40,6 +40,7 @@ public class OAuth2Controller {
                         authentication.getAuthorizedClientRegistrationId(),
                         authentication.getName()
                 );
+
         final String accessToken = oAuth2AuthorizedClient.getAccessToken().getTokenValue();
 
         final OAuth2User user = authentication.getPrincipal();

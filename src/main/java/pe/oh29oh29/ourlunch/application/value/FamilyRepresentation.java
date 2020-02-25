@@ -23,6 +23,7 @@ public class FamilyRepresentation {
         public static class Member {
             private String id;
             private String name;
+            private String appetite;
         }
     }
 }

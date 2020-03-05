@@ -11,8 +11,6 @@ import pe.oh29oh29.ourlunch.application.MemberCommandService;
 import pe.oh29oh29.ourlunch.application.MemberQueryService;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -20,9 +18,9 @@ import java.util.Map;
 @Controller
 public class OAuth2Controller {
 
+    private final OAuth2AuthorizedClientService authorizedClientService;
     private final MemberCommandService memberCommandService;
     private final MemberQueryService memberQueryService;
-    private final OAuth2AuthorizedClientService authorizedClientService;
 
     @PostConstruct
     public void init() {
@@ -30,10 +28,9 @@ public class OAuth2Controller {
     }
 
     @GetMapping("/login/success")
-    public void loginSuccess(
-            final HttpServletResponse response,
+    public String loginSuccess(
             final OAuth2AuthenticationToken authentication
-    ) throws IOException {
+    ) {
 
         final OAuth2AuthorizedClient oAuth2AuthorizedClient =
                 authorizedClientService.loadAuthorizedClient(
@@ -46,14 +43,13 @@ public class OAuth2Controller {
         final OAuth2User user = authentication.getPrincipal();
         final Map userInfo = (Map) user.getAttributes().get("properties");
         final String id = user.getName();
-
-        response.getWriter().write(accessToken);
+        final String query = "access_token=" + accessToken;
 
         if (!memberQueryService.exist((id))) {
             memberCommandService.signUp(id, (String) userInfo.get("nickname"));
-            response.sendRedirect("/startFamily");
+            return "redirect:/startFamily?" + query;
         } else {
-            response.sendRedirect("/main");
+            return "redirect:/main?" + query;
         }
     }
 }

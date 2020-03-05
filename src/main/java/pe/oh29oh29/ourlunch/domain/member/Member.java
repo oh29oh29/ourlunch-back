@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import pe.oh29oh29.ourlunch.domain.family.Family;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
@@ -32,7 +33,7 @@ public class Member {
     @NotNull
     private String name;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Family family;
 
     private String appetite;

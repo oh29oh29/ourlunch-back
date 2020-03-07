@@ -3,8 +3,6 @@ package pe.oh29oh29.ourlunch.application.value;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-
 public class MemberRepresentation {
 
     @Builder
@@ -19,6 +17,6 @@ public class MemberRepresentation {
         private String familyName;
         private String appetite;
         private boolean isMaster;
-        private LocalDateTime signUpDate;
+        private String signUpDate;
     }
 }

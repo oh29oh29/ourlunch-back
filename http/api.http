@@ -1,8 +1,22 @@
 
-## 사용자 프로필 조회 API
+### 사용자 프로필 조회 API
 
 GET http://localhost:8080/api/v1/member/profile
 Content-Type: application/json
-Authorization: Bearer 489D9qgrpqP9S7QKFxE7_0t5hCTX7ZYY416_qwopyNkAAAFwrX6LMg
+Authorization: Bearer {{access_token}}
+
+
+### 팸생성 API
+
+POST http://localhost:8080/api/v1/initialization
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+  "userName": "우점",
+  "appetite": "아재입맛",
+  "companyName": "우점주식회사",
+  "familyName": "우점팸"
+}
 
 ###

@@ -19,7 +19,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 
 @RestController
-@RequestMapping("/api/initialization")
+@RequestMapping("/api/v1/initialization")
 public class RegistrationController {
 
     private final InitialRegistrationFacade initialRegistrationFacade;
@@ -33,13 +33,9 @@ public class RegistrationController {
             @ApiIgnore final OAuth2AuthenticationToken authentication,
             @Valid @RequestBody final InitalRegistrationCommand.Regist command
     ) {
-        /**
-         * production code:
-         * final String userId = authentication.getPrincipal().getName();
-         * */
-        final String userId = command.getUserName();
+        final String userId = authentication.getPrincipal().getName();
 
-        Family registedFamily = initialRegistrationFacade.regist(
+        final Family family = initialRegistrationFacade.regist(
                 userId,
                 command.getUserName(),
                 command.getAppetite(),
@@ -50,8 +46,8 @@ public class RegistrationController {
         return new Response<>(
                 InitalRegistrationRepresentation.Regist
                         .builder()
-                        .familyId(registedFamily.getId())
-                        .linkUrl(registedFamily.getLinkUrl())
+                        .familyId(family.getId())
+                        .linkUrl(family.getLinkUrl())
                         .build()
         );
     }

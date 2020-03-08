@@ -11,10 +11,6 @@ spring:
           kakao:
             client-id: 43108c699dacc365b4b86b932e6c7b60
             client-secret: R7zG5IXGFlxTYPowDVQmBwMJHcE0OyJu
-  h2:
-    console:
-      enabled: true
-      path: /console
 
   ## Hibernate Properties
   # The SQL dialect makes Hibernate generate better SQL for the chosen database

@@ -4,13 +4,6 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password:
-  security:
-    oauth2:
-      client:
-        registration:
-          kakao:
-            client-id: 43108c699dacc365b4b86b932e6c7b60
-            client-secret: R7zG5IXGFlxTYPowDVQmBwMJHcE0OyJu
   h2:
     console:
       enabled: true

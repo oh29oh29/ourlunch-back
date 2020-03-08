@@ -6,22 +6,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.oh29oh29.ourlunch.application.FamilyCommandService;
 import pe.oh29oh29.ourlunch.application.FamilyQueryService;
 import pe.oh29oh29.ourlunch.application.value.FamilyRepresentation;
 import pe.oh29oh29.ourlunch.domain.member.Member;
 import pe.oh29oh29.ourlunch.model.Response;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 
 @RestController
-@RequestMapping("/api/family")
+@RequestMapping("/api/v1/family")
 public class FamilyController {
 
-    private final FamilyCommandService familyCommandService;
     private final FamilyQueryService familyQueryService;
 
     @ApiOperation(
@@ -31,17 +29,16 @@ public class FamilyController {
     @GetMapping("/{familyId}/members")
     public Response<FamilyRepresentation.GetMembers> getMembers(@PathVariable String familyId) {
         final List<Member> members = familyQueryService.getMembers(familyId);
-        final List<FamilyRepresentation.GetMembers.Member> memberList = new ArrayList<>();
-        for (Member member : members) {
-            memberList.add(
-                    FamilyRepresentation.GetMembers.Member
-                            .builder()
-                            .id(member.getId())
-                            .name(member.getName())
-                            .appetite(member.getAppetite())
-                            .build()
-            );
-        }
+        final List<FamilyRepresentation.GetMembers.Member> memberList =
+                members.stream()
+                        .map(member ->
+                                FamilyRepresentation.GetMembers.Member
+                                        .builder()
+                                        .id(member.getId())
+                                        .name(member.getName())
+                                        .appetite(member.getAppetite())
+                                        .build())
+                        .collect(Collectors.toList());
 
         return new Response<>(
                 FamilyRepresentation.GetMembers

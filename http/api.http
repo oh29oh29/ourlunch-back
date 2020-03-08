@@ -9,7 +9,6 @@ Content-Type: application/json
 
 POST http://localhost:8080/dev/api/v1/initialization
 Content-Type: application/json
-Authorization: Bearer {{access_token}}
 
 {
   "userName": "우점",
@@ -23,8 +22,11 @@ Authorization: Bearer {{access_token}}
 
 GET http://localhost:8080/dev/api/v1/member/profile
 Content-Type: application/json
-Authorization: Bearer {{access_token}}
 
 
+### 팸 멤버 목록 조회 API
+
+GET http://localhost:8080/dev/api/v1/family/1/members
+Content-Type: application/json
 
 ###

@@ -1,6 +1,7 @@
 package pe.oh29oh29.ourlunch.oauth2;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -10,11 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import pe.oh29oh29.ourlunch.application.MemberCommandService;
 import pe.oh29oh29.ourlunch.application.MemberQueryService;
 
-import javax.annotation.PostConstruct;
 import java.util.Map;
 
 @RequiredArgsConstructor
 
+@Profile("!dev")
 @Controller
 public class OAuth2Controller {
 
@@ -22,16 +23,8 @@ public class OAuth2Controller {
     private final MemberCommandService memberCommandService;
     private final MemberQueryService memberQueryService;
 
-    @PostConstruct
-    public void init() {
-        memberCommandService.signUp("1", "테스트계정");
-    }
-
     @GetMapping("/login/success")
-    public String loginSuccess(
-            final OAuth2AuthenticationToken authentication
-    ) {
-
+    public String loginSuccess(final OAuth2AuthenticationToken authentication) {
         final OAuth2AuthorizedClient oAuth2AuthorizedClient =
                 authorizedClientService.loadAuthorizedClient(
                         authentication.getAuthorizedClientRegistrationId(),

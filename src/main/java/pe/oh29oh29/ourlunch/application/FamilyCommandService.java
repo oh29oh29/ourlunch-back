@@ -27,7 +27,7 @@ public class FamilyCommandService {
     }
 
     private String generateFamilyCode() {
-        return (UUID.randomUUID().toString().toUpperCase() + UUID.randomUUID().toString().toUpperCase()).replaceAll("-", "");
+        return UUID.randomUUID().toString().toUpperCase().replaceAll("-", "");
     }
 
 }

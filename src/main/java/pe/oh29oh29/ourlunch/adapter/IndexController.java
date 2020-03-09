@@ -38,9 +38,9 @@ public class IndexController {
     }
 
 
-    @RequestMapping(value = {"/startFamily", "/main"}, method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = {"/{path:[^\\\\.]*}", "/**/{path:[^\\\\.]*}"}, method = {RequestMethod.POST, RequestMethod.GET})
     public String html5Forwarding(
-            @RequestParam("access_token") String accessToken,
+            @RequestParam(value = "access_token", required = false) String accessToken,
             final HttpServletRequest request
     ) {
         request.setAttribute("access_token", accessToken);

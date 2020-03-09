@@ -1,4 +1,4 @@
-package pe.oh29oh29.ourlunch.adapter;
+package pe.oh29oh29.ourlunch.adapter.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

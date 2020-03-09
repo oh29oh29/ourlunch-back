@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.oh29oh29.ourlunch.adapter.FamilyController;
+import pe.oh29oh29.ourlunch.adapter.api.FamilyController;
 import pe.oh29oh29.ourlunch.application.value.FamilyRepresentation;
 import pe.oh29oh29.ourlunch.model.Response;
 

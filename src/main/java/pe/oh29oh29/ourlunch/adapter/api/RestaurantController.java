@@ -1,6 +1,5 @@
-package pe.oh29oh29.ourlunch.adapter;
+package pe.oh29oh29.ourlunch.adapter.api;
 
-import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pe.oh29oh29.ourlunch.application.RestaurantCommandService;
@@ -23,14 +22,8 @@ public class RestaurantController {
     private final RestaurantCommandService restaurantCommandService;
     private final RestaurantQueryService restaurantQueryService;
 
-    @ApiOperation(
-            value = "식당 등록 API",
-            notes = "식당을 등록합니다."
-    )
     @PostMapping
-    public Response addRestaurant(
-            @Valid @RequestBody final RestaurantCommand.Addition command
-    ) {
+    public Response addRestaurant(@Valid @RequestBody RestaurantCommand.Addition command) {
         restaurantCommandService.addRestaurant(
                 command.getFamilyName(),
                 command.getName(),
@@ -46,10 +39,6 @@ public class RestaurantController {
      * TODO
      * 페이징
      * */
-    @ApiOperation(
-            value = "식당 목록 조회 API",
-            notes = "식당 목록을 조회합니다."
-    )
     @GetMapping("/list")
     public Response<RestaurantRepresentation.Total> getRestaurants(@RequestParam("family_name") String familyName) {
         final List<Restaurant> restaurants = restaurantQueryService.findAllByFamilyName(familyName);

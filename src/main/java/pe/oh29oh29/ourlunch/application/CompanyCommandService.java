@@ -12,7 +12,7 @@ public class CompanyCommandService {
 
     private final CompanyRepository companyRepository;
 
-    Company addCompany(final String name) {
+    Company addCompany(String name) {
         return companyRepository.save(new Company(name));
     }
 }

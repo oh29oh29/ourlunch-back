@@ -12,7 +12,7 @@ public class CompanyQueryService {
 
     private final CompanyRepository companyRepository;
 
-    public Company findByNameOrSave(final String name) {
+    public Company findByNameOrSave(String name) {
         return companyRepository
                 .findByName(name)
                 .orElseGet(() -> companyRepository.save(new Company(name)));

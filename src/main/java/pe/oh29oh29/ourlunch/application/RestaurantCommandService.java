@@ -20,12 +20,12 @@ public class RestaurantCommandService {
 
     @Transactional
     public void addRestaurant(
-            final String familyName,
-            final String name,
-            final String address,
-            final String type,
-            final String positionX,
-            final String positionY
+            String familyName,
+            String name,
+            String address,
+            String type,
+            String positionX,
+            String positionY
     ) {
         /**
          * TODO

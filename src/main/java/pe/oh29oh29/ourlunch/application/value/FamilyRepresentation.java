@@ -9,12 +9,6 @@ public class FamilyRepresentation {
 
     @Builder
     @Getter
-    public static class Creations {
-        private String linkUrl;
-    }
-
-    @Builder
-    @Getter
     public static class GetMembers {
         private List<Member> members;
 

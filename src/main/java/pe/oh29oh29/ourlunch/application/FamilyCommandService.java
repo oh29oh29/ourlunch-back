@@ -18,16 +18,16 @@ public class FamilyCommandService {
 
     @Transactional
     public Family createFamily(
-            final String familyName,
-            final Company company
+            String familyName,
+            Company company
     ) {
         return familyRepository.save(
-                new Family(company, familyName, generateFamilyLinkUrl())
+                new Family(company, familyName, generateFamilyCode())
         );
     }
 
-    private String generateFamilyLinkUrl() {
-        return (UUID.randomUUID().toString().toUpperCase() + UUID.randomUUID().toString().toUpperCase()).replaceAll("-", "");
+    private String generateFamilyCode() {
+        return UUID.randomUUID().toString().toUpperCase().replaceAll("-", "");
     }
 
 }

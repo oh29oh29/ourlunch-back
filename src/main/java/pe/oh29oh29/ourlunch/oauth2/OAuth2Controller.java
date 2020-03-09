@@ -24,7 +24,7 @@ public class OAuth2Controller {
     private final MemberQueryService memberQueryService;
 
     @GetMapping("/login/success")
-    public String loginSuccess(final OAuth2AuthenticationToken authentication) {
+    public String loginSuccess(OAuth2AuthenticationToken authentication) {
         final OAuth2AuthorizedClient oAuth2AuthorizedClient =
                 authorizedClientService.loadAuthorizedClient(
                         authentication.getAuthorizedClientRegistrationId(),

@@ -21,7 +21,7 @@ public class FamilyQueryService {
     @Value("${ourlunch.url}")
     private String ourlunchUrl;
 
-    public List<Member> getMembers(final String familyId) {
+    public List<Member> getMembers(String familyId) {
         final Family family =
                 familyRepository
                         .findById(Long.parseLong(familyId))

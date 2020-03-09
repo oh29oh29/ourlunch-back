@@ -24,7 +24,7 @@ public class DevRegistrationController {
     private final RegistrationController registrationController;
 
     @PostMapping
-    public Response<InitalRegistrationRepresentation.Regist> regist(@Valid @RequestBody final InitalRegistrationCommand.Regist command) {
+    public Response<InitalRegistrationRepresentation.Regist> regist(@Valid @RequestBody InitalRegistrationCommand.Regist command) {
         return registrationController.regist(devOAuth2AuthenticationToken.getAuthentication(), command);
     }
 }

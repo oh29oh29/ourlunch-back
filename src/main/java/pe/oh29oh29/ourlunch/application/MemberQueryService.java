@@ -14,11 +14,11 @@ public class MemberQueryService {
     private final MemberRepository memberRepository;
 
     @Transactional(readOnly = true)
-    public Member findById(final String id) {
+    public Member findById(String id) {
         return memberRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 
-    public boolean exist(final String id) {
+    public boolean exist(String id) {
         return memberRepository.findById(id).isPresent();
     }
 }

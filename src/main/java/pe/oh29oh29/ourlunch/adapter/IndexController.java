@@ -22,7 +22,7 @@ public class IndexController {
     private final MemberQueryService memberQueryService;
 
     @GetMapping("/")
-    public String welcome(final OAuth2AuthenticationToken authentication) {
+    public String welcome(OAuth2AuthenticationToken authentication) {
         if (authentication == null) {
             return "redirect:/login";
         }
@@ -41,7 +41,7 @@ public class IndexController {
     @RequestMapping(value = {"/{path:[^\\\\.]*}", "/**/{path:[^\\\\.]*}"}, method = {RequestMethod.POST, RequestMethod.GET})
     public String html5Forwarding(
             @RequestParam(value = "access_token", required = false) String accessToken,
-            final HttpServletRequest request
+            HttpServletRequest request
     ) {
         request.setAttribute("access_token", accessToken);
         return "forward:/index.html";
@@ -49,8 +49,8 @@ public class IndexController {
 
     @GetMapping("/redirect")
     public void goHome(
-            final HttpServletResponse response,
-            final OAuth2AuthenticationToken authentication
+            HttpServletResponse response,
+            OAuth2AuthenticationToken authentication
     ) throws IOException {
         if (authentication.isAuthenticated()) {
             response.sendRedirect("/login/success");

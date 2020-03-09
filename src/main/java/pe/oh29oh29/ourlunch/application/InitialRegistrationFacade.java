@@ -21,11 +21,11 @@ public class InitialRegistrationFacade {
 
     @Transactional
     public Family regist(
-            final String userId,
-            final String userName,
-            final String appetite,
-            final String companyName,
-            final String familyName
+            String userId,
+            String userName,
+            String appetite,
+            String companyName,
+            String familyName
     ) {
         final Company company = companyQueryService.findByNameOrSave(companyName);
         final Family family = familyCommandService.createFamily(familyName, company);

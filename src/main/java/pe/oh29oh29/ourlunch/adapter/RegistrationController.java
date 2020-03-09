@@ -1,6 +1,5 @@
 package pe.oh29oh29.ourlunch.adapter;
 
-import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +11,6 @@ import pe.oh29oh29.ourlunch.application.value.InitalRegistrationCommand;
 import pe.oh29oh29.ourlunch.application.value.InitalRegistrationRepresentation;
 import pe.oh29oh29.ourlunch.domain.family.Family;
 import pe.oh29oh29.ourlunch.model.Response;
-import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
@@ -24,14 +22,13 @@ public class RegistrationController {
 
     private final InitialRegistrationFacade initialRegistrationFacade;
 
-    @ApiOperation(
-            value = "점심팸 생성 API",
-            notes = "점심팸을 생성합니다."
-    )
+    /**
+     * 점심팽 생성 API
+     * */
     @PostMapping
     public Response<InitalRegistrationRepresentation.Regist> regist(
-            @ApiIgnore final OAuth2AuthenticationToken authentication,
-            @Valid @RequestBody final InitalRegistrationCommand.Regist command
+            OAuth2AuthenticationToken authentication,
+            @Valid @RequestBody InitalRegistrationCommand.Regist command
     ) {
         final String userId = authentication.getPrincipal().getName();
 

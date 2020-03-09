@@ -22,8 +22,11 @@ public class MemberController {
 
     private final MemberQueryService memberQueryService;
 
+    /**
+     * 사용자 프로필 조회 API
+     * */
     @GetMapping("/profile")
-    public Response<MemberRepresentation.Profile> getMemberProfile(final OAuth2AuthenticationToken authentication) {
+    public Response<MemberRepresentation.Profile> getMemberProfile(OAuth2AuthenticationToken authentication) {
         final OAuth2User user = authentication.getPrincipal();
         final String id = user.getName();
         final Member member = memberQueryService.findById(id);

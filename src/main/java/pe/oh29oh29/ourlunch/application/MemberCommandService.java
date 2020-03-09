@@ -16,8 +16,8 @@ public class MemberCommandService {
 
     @Transactional
     public void joinFamily(
-            final String userId,
-            final Family family
+            String userId,
+            Family family
     ) {
         final Member member = findById(userId);
         member.setFamily(family);
@@ -25,22 +25,22 @@ public class MemberCommandService {
 
     @Transactional
     public Member signUp(
-            final String id,
-            final String nickName
+            String id,
+            String nickName
     ) {
         return memberRepository.save(new Member(id, nickName));
     }
 
-    public Member findById(final String id) {
+    public Member findById(String id) {
         return memberRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 
     @Transactional
     public void updateFamilyWithMaster(
-            final String userId,
-            final String userName,
-            final String appetite,
-            final Family family
+            String userId,
+            String userName,
+            String appetite,
+            Family family
     ) {
         final Member member =
                 memberRepository

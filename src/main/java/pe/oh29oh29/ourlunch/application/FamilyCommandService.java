@@ -18,8 +18,8 @@ public class FamilyCommandService {
 
     @Transactional
     public Family createFamily(
-            final String familyName,
-            final Company company
+            String familyName,
+            Company company
     ) {
         return familyRepository.save(
                 new Family(company, familyName, generateFamilyLinkUrl())

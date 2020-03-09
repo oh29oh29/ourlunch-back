@@ -22,11 +22,11 @@ public class FamilyCommandService {
             Company company
     ) {
         return familyRepository.save(
-                new Family(company, familyName, generateFamilyLinkUrl())
+                new Family(company, familyName, generateFamilyCode())
         );
     }
 
-    private String generateFamilyLinkUrl() {
+    private String generateFamilyCode() {
         return (UUID.randomUUID().toString().toUpperCase() + UUID.randomUUID().toString().toUpperCase()).replaceAll("-", "");
     }
 

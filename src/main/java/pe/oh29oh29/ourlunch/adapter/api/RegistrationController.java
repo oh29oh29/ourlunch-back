@@ -44,7 +44,7 @@ public class RegistrationController {
                 InitalRegistrationRepresentation.Regist
                         .builder()
                         .familyId(family.getId())
-                        .linkUrl(family.getLinkUrl())
+                        .familyCode(family.getCode())
                         .build()
         );
     }

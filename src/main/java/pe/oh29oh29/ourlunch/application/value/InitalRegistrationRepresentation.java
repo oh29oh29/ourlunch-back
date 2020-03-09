@@ -9,6 +9,6 @@ public class InitalRegistrationRepresentation {
     @Getter
     public static class Regist {
         private Long familyId;
-        private String linkUrl;
+        private String familyCode;
     }
 }

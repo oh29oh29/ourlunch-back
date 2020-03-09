@@ -19,11 +19,11 @@ public class Family {
     public Family(
             @NotNull Company company,
             @NotNull String name,
-            @NotNull String linkUrl
+            @NotNull String code
     ) {
         this.company = company;
         this.name = name;
-        this.linkUrl = linkUrl;
+        this.code = code;
         this.createDate = LocalDateTime.now();
     }
 
@@ -42,7 +42,7 @@ public class Family {
     private List<Restaurant> restaurant;
 
     @NotNull
-    private String linkUrl;
+    private String code;
 
     @NotNull
     private LocalDateTime createDate;

@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pe.oh29oh29.ourlunch.application.MemberQueryService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @RequiredArgsConstructor
 
@@ -37,7 +35,6 @@ public class IndexController {
         }
     }
 
-
     @RequestMapping(value = {"/{path:[^\\\\.]*}", "/**/{path:[^\\\\.]*}"}, method = {RequestMethod.POST, RequestMethod.GET})
     public String html5Forwarding(
             @RequestParam(value = "access_token", required = false) String accessToken,
@@ -48,14 +45,11 @@ public class IndexController {
     }
 
     @GetMapping("/redirect")
-    public void goHome(
-            HttpServletResponse response,
-            OAuth2AuthenticationToken authentication
-    ) throws IOException {
+    public String goHome(OAuth2AuthenticationToken authentication) {
         if (authentication.isAuthenticated()) {
-            response.sendRedirect("/login/success");
+            return "redirect:/login/success";
         } else {
-            response.sendRedirect("/login");
+            return "redirect:/login";
         }
     }
 }

@@ -14,6 +14,7 @@ public class MemberRepresentation {
     @Getter
     public static class Profile {
         private String name;
+        private Long familyId;
         private String familyName;
         private String appetite;
         private boolean isMaster;

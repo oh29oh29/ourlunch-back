@@ -22,10 +22,9 @@ public class FamilyQueryService {
     private String ourlunchUrl;
 
     public List<Member> getMembers(String familyId) {
-        final Family family =
-                familyRepository
-                        .findById(Long.parseLong(familyId))
-                        .orElseThrow(IllegalArgumentException::new);
+        final Family family = familyRepository
+                .findById(Long.parseLong(familyId))
+                .orElseThrow(IllegalArgumentException::new);
 
         return memberRepository.findAllByFamily(family);
     }

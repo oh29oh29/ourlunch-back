@@ -31,20 +31,19 @@ public class MemberController {
         final String id = user.getName();
         final Member member = memberQueryService.findById(id);
         final Family family = member.getFamily();
-        Long familyId = null;
-        String familyName = null;
 
+        final MemberRepresentation.Profile.Family familyDTO = new MemberRepresentation.Profile.Family();
         if (family != null) {
-            familyId = family.getId();
-            familyName = family.getName();
+            familyDTO.setId(family.getId());
+            familyDTO.setCode(family.getCode());
+            familyDTO.setName(family.getName());
         }
 
         return new Response<>(
                 MemberRepresentation.Profile
                         .builder()
                         .name(member.getName())
-                        .familyId(familyId)
-                        .familyName(familyName)
+                        .family(familyDTO)
                         .appetite(member.getAppetite())
                         .isMaster(member.isMaster())
                         .signUpDate(DateUtil.format(member.getSignUpDate(), DateFormat.yyyyMMddHHmmss))

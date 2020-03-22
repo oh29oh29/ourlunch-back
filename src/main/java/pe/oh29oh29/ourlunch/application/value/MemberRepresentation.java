@@ -2,6 +2,7 @@ package pe.oh29oh29.ourlunch.application.value;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 public class MemberRepresentation {
 
@@ -14,10 +15,17 @@ public class MemberRepresentation {
     @Getter
     public static class Profile {
         private String name;
-        private Long familyId;
-        private String familyName;
         private String appetite;
+        private Family family;
         private boolean isMaster;
         private String signUpDate;
+
+        @Getter
+        @Setter
+        public static class Family {
+            private Long id;
+            private String name;
+            private String code;
+        }
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.core.user.OAuth2UserAuthority;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pe.oh29oh29.ourlunch.application.MemberCommandService;
 import pe.oh29oh29.ourlunch.model.Response;
 
 import java.sql.Timestamp;
@@ -24,17 +25,21 @@ import java.util.Map;
 public class AdminController {
 
     private final DevOAuth2AuthenticationToken devOAuth2AuthenticationToken;
+    private final MemberCommandService memberCommandService;
 
     @PostMapping("/login")
     public Response login() {
         final String nameAttributeKey = "name";
-        final Map<String, Object> attributes = ImmutableMap.of(nameAttributeKey, generateDevId());
+        final String id = generateDevId();
+        final Map<String, Object> attributes = ImmutableMap.of(nameAttributeKey, id);
         final ImmutableList<OAuth2UserAuthority> authorities = ImmutableList.of(new OAuth2UserAuthority(attributes));
         final OAuth2User principal = new DefaultOAuth2User(
                 authorities,
                 attributes,
                 nameAttributeKey
         );
+
+        memberCommandService.signUp(id, "dev");
         devOAuth2AuthenticationToken.setAuthentication(new OAuth2AuthenticationToken(principal, authorities, "dev"));
         return Response.ok();
     }

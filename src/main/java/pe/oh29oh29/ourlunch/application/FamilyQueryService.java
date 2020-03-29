@@ -29,4 +29,7 @@ public class FamilyQueryService {
         return memberRepository.findAllByFamily(family);
     }
 
+    public boolean existByCode(String code) {
+        return familyRepository.findByCode(code).isPresent();
+    }
 }

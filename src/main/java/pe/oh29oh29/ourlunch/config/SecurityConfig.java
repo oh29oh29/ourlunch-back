@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/login/**", "/oauth2/**", "/console/**").permitAll()
+                .antMatchers("/", "/login/**", "/oauth2/**", "/console/**", "/join/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .oauth2Login()

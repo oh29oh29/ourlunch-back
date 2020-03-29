@@ -5,8 +5,6 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import pe.oh29oh29.ourlunch.application.MemberQueryService;
 
@@ -35,15 +33,6 @@ public class IndexController {
         }
     }
 
-    @RequestMapping(value = {"/{path:[^\\\\.]*}", "/**/{path:[^\\\\.]*}"}, method = {RequestMethod.POST, RequestMethod.GET})
-    public String html5Forwarding(
-            @RequestParam(value = "access_token", required = false) String accessToken,
-            HttpServletRequest request
-    ) {
-        request.setAttribute("access_token", accessToken);
-        return "forward:/index.html";
-    }
-
     @GetMapping("/redirect")
     public String goHome(OAuth2AuthenticationToken authentication) {
         if (authentication.isAuthenticated()) {
@@ -51,5 +40,23 @@ public class IndexController {
         } else {
             return "redirect:/login";
         }
+    }
+
+    @GetMapping("/join")
+    public String forwardJoinIndexPage(
+            @RequestParam("family_code") String familyCode,
+            HttpServletRequest request
+    ) {
+        request.setAttribute("family_code", familyCode);
+        return "forward:/index.html";
+    }
+
+    @GetMapping(value = {"/{path:[^\\\\.]*}", "/**/{path:[^\\\\.]*}"})
+    public String html5Forwarding(
+            @RequestParam(value = "access_token", required = false) String accessToken,
+            HttpServletRequest request
+    ) {
+        request.setAttribute("access_token", accessToken);
+        return "forward:/index.html";
     }
 }

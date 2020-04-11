@@ -6,9 +6,12 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pe.oh29oh29.ourlunch.application.MemberCommandService;
 import pe.oh29oh29.ourlunch.application.MemberQueryService;
+import pe.oh29oh29.ourlunch.constants.Common;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @RequiredArgsConstructor
 
@@ -16,39 +19,24 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
 
     private final MemberQueryService memberQueryService;
+    private final MemberCommandService memberCommandService;
 
     @GetMapping("/")
     public String welcome(OAuth2AuthenticationToken authentication) {
         if (authentication == null) {
-            return "redirect:/login";
+            return Common.REDIRECT + "/";
         }
 
         final OAuth2User user = authentication.getPrincipal();
+        final Map userInfo = (Map) user.getAttributes().get("properties");
         final String id = user.getName();
 
-        if (!memberQueryService.exist((id))) {
-            return "redirect:/startFamily";
+        if (!memberQueryService.exist(id)) {
+            memberCommandService.signUp(id, (String) userInfo.get("nickname"));
+            return Common.REDIRECT + "/home";
         } else {
-            return "redirect:/main";
+            return Common.REDIRECT + "/main";
         }
-    }
-
-    @GetMapping("/redirect")
-    public String goHome(OAuth2AuthenticationToken authentication) {
-        if (authentication.isAuthenticated()) {
-            return "redirect:/login/success";
-        } else {
-            return "redirect:/login";
-        }
-    }
-
-    @GetMapping("/join")
-    public String forwardJoinIndexPage(
-            @RequestParam("family_code") String familyCode,
-            HttpServletRequest request
-    ) {
-        request.setAttribute("family_code", familyCode);
-        return "forward:/index.html";
     }
 
     @GetMapping(value = {"/{path:[^\\\\.]*}", "/**/{path:[^\\\\.]*}"})
@@ -56,7 +44,7 @@ public class IndexController {
             @RequestParam(value = "access_token", required = false) String accessToken,
             HttpServletRequest request
     ) {
-        request.setAttribute("access_token", accessToken);
-        return "forward:/index.html";
+        request.setAttribute("accessToken", accessToken);
+        return Common.FORWARD + "/index.html";
     }
 }

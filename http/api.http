@@ -30,3 +30,8 @@ GET http://localhost:8080/dev/api/v1/family/1/members
 Content-Type: application/json
 
 ###
+
+GET http://localhost:8080/family/join/921C511097F1466BA7F0201F35DFCEF2
+Content-Type: application/json
+
+###

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import pe.oh29oh29.ourlunch.application.MemberCommandService;
 import pe.oh29oh29.ourlunch.application.MemberQueryService;
+import pe.oh29oh29.ourlunch.constants.Common;
 
 import java.util.Map;
 
@@ -36,13 +37,13 @@ public class OAuth2Controller {
         final OAuth2User user = authentication.getPrincipal();
         final Map userInfo = (Map) user.getAttributes().get("properties");
         final String id = user.getName();
-        final String query = "access_token=" + accessToken;
+        final String query = String.format("accessToken=%s", accessToken);
 
-        if (!memberQueryService.exist((id))) {
+        if (!memberQueryService.exist(id)) {
             memberCommandService.signUp(id, (String) userInfo.get("nickname"));
-            return "redirect:/startFamily?" + query;
+            return Common.REDIRECT + "/home?" + query;
         } else {
-            return "redirect:/main?" + query;
+            return Common.REDIRECT + "/main?" + query;
         }
     }
 }

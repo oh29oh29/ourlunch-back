@@ -1,24 +1,25 @@
 package pe.oh29oh29.ourlunch.model;
 
 import lombok.Data;
+import pe.oh29oh29.ourlunch.constants.ResponseCode;
 
 @Data
 public class Response<T> {
 
-    private int code;
+    private ResponseCode code;
 
     private String message;
 
-    private T data;
+    private T body;
 
     private Response() {
         this(null);
     }
 
-    public Response(T data) {
-        this.code = org.apache.catalina.connector.Response.SC_OK;
-        this.message = "SUCCESS";
-        this.data = data;
+    public Response(T body) {
+        this.code = ResponseCode.WJ0000;
+        this.message = code.getMessage();
+        this.body = body;
     }
 
     public static Response ok() {

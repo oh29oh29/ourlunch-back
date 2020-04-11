@@ -6,8 +6,10 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 import pe.oh29oh29.ourlunch.application.FamilyCommandService;
 import pe.oh29oh29.ourlunch.application.FamilyQueryService;
+import pe.oh29oh29.ourlunch.application.InitialRegistrationFacade;
 import pe.oh29oh29.ourlunch.application.value.FamilyCommand;
 import pe.oh29oh29.ourlunch.application.value.FamilyRepresentation;
+import pe.oh29oh29.ourlunch.domain.family.Family;
 import pe.oh29oh29.ourlunch.domain.member.Member;
 import pe.oh29oh29.ourlunch.model.Response;
 
@@ -23,6 +25,39 @@ public class FamilyController {
 
     private final FamilyQueryService familyQueryService;
     private final FamilyCommandService familyCommandService;
+    private final InitialRegistrationFacade initialRegistrationFacade;
+
+    /**
+     * 점심팽 생성 API
+     */
+    @PostMapping
+    public Response<FamilyRepresentation.Create> create(
+            OAuth2AuthenticationToken authentication,
+            @Valid @RequestBody FamilyCommand.Create command
+    ) {
+        final String userId = authentication.getPrincipal().getName();
+        final Family family = initialRegistrationFacade.regist(
+                userId,
+                command.getUserName(),
+                command.getAppetite(),
+                command.getCompanyName(),
+                command.getFamilyName()
+        );
+
+        return new Response<>(
+                FamilyRepresentation.Create
+                        .builder()
+                        .family(
+                                FamilyRepresentation.Create.Family
+                                        .builder()
+                                        .id(family.getId())
+                                        .name(family.getName())
+                                        .code(family.getCode())
+                                        .build()
+                        )
+                        .build()
+        );
+    }
 
     /**
      * 점심팸 멤버 조회 API

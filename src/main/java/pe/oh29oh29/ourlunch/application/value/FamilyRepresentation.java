@@ -9,6 +9,20 @@ public class FamilyRepresentation {
 
     @Builder
     @Getter
+    public static class Create {
+        private Family family;
+
+        @Builder
+        @Getter
+        public static class Family {
+            private Long id;
+            private String name;
+            private String code;
+        }
+    }
+
+    @Builder
+    @Getter
     public static class GetMembers {
         private List<Member> members;
 

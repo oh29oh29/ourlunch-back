@@ -42,4 +42,8 @@ public class Member {
 
     @NotNull
     private LocalDateTime signUpDate;
+
+    public boolean isJoinedFamily() {
+        return family != null;
+    }
 }

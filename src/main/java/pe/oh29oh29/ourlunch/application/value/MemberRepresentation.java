@@ -17,7 +17,7 @@ public class MemberRepresentation {
         private String name;
         private String appetite;
         private Family family;
-        private boolean isMaster;
+        private boolean master;
         private String signUpDate;
 
         @Getter

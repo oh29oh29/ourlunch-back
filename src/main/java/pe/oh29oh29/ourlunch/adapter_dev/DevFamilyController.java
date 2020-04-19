@@ -29,4 +29,14 @@ public class DevFamilyController {
     public Response<FamilyRepresentation.GetMembers> getMembers(@PathVariable String familyId) {
         return familyController.getMembers(familyId);
     }
+
+    @GetMapping("/{familyCode}")
+    public Response<FamilyRepresentation.GetFamily> getFamily(@PathVariable String familyCode) {
+        return familyController.getFamily(familyCode);
+    }
+
+    @PostMapping("/join")
+    public Response joinFamily(@Valid @RequestBody FamilyCommand.Join command) throws Exception {
+        return familyController.join(devOAuth2AuthenticationToken.getAuthentication(), command);
+    }
 }

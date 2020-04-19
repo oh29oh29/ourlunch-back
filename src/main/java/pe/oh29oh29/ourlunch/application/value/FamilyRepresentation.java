@@ -34,4 +34,11 @@ public class FamilyRepresentation {
             private String appetite;
         }
     }
+
+    @Builder
+    @Getter
+    public static class GetFamily {
+        private Long id;
+        private String name;
+    }
 }

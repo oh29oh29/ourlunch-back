@@ -89,8 +89,8 @@ public class FamilyController {
      */
     @PostMapping("/join")
     public Response join(
-            @Valid @RequestBody FamilyCommand.Join command,
-            OAuth2AuthenticationToken authentication
+            OAuth2AuthenticationToken authentication,
+            @Valid @RequestBody FamilyCommand.Join command
     ) throws Exception {
         final OAuth2User user = authentication.getPrincipal();
         final String id = user.getName();
@@ -103,5 +103,21 @@ public class FamilyController {
         );
 
         return Response.ok();
+    }
+
+    /**
+     * 점심팸 조회 API
+     */
+    @GetMapping("/{code}")
+    public Response<FamilyRepresentation.GetFamily> getFamily(@PathVariable String code) {
+        final Family family = familyQueryService.getFamily(code);
+
+        return new Response<>(
+                FamilyRepresentation.GetFamily
+                        .builder()
+                        .id(family.getId())
+                        .name(family.getName())
+                        .build()
+        );
     }
 }

@@ -21,9 +21,9 @@ public class FamilyQueryService {
     @Value("${ourlunch.url}")
     private String ourlunchUrl;
 
-    public List<Member> getMembers(String familyId) {
+    public List<Member> getMembers(String id) {
         final Family family = familyRepository
-                .findById(Long.parseLong(familyId))
+                .findById(Long.parseLong(id))
                 .orElseThrow(IllegalArgumentException::new);
 
         return memberRepository.findAllByFamily(family);
@@ -31,5 +31,11 @@ public class FamilyQueryService {
 
     public boolean existByCode(String code) {
         return familyRepository.findByCode(code).isPresent();
+    }
+
+    public Family getFamily(String code) {
+        return familyRepository
+                .findByCode(code)
+                .orElseThrow(IllegalArgumentException::new);
     }
 }

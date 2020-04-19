@@ -45,7 +45,7 @@ public class MemberController {
                         .name(member.getName())
                         .family(familyDTO)
                         .appetite(member.getAppetite())
-                        .isMaster(member.isMaster())
+                        .master(member.isMaster())
                         .signUpDate(DateUtil.format(member.getSignUpDate(), DateFormat.yyyyMMddHHmmss))
                         .build()
         );
